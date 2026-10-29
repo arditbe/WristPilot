@@ -1,0 +1,12 @@
+# Xcode
+build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+*.xcscmblueprint
+
+# Personal signing settings
+Config/Local.xcconfig
+
+# macOS
+.DS_Store

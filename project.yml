@@ -1,0 +1,51 @@
+name: WristPilot
+options:
+  deploymentTarget:
+    watchOS: "10.0"
+    macOS: "14.0"
+configFiles:
+  Debug: Config/Signing.xcconfig
+  Release: Config/Signing.xcconfig
+settings:
+  base:
+    CODE_SIGN_STYLE: Automatic
+    SWIFT_VERSION: "5.0"
+    MARKETING_VERSION: "1.0.0"
+    CURRENT_PROJECT_VERSION: "1"
+    PRODUCT_NAME: WristPilot
+targets:
+  WristPilotWatch:
+    type: application
+    platform: watchOS
+    sources: [Watch, Shared]
+    info:
+      path: Watch/Info.plist
+      properties:
+        CFBundleDisplayName: WristPilot
+        WKApplication: true
+        WKWatchOnly: true
+        WKBackgroundModes: [physical-therapy]
+        NSBluetoothAlwaysUsageDescription: WristPilot connects to your Mac over Bluetooth to control the cursor.
+        NSMotionUsageDescription: WristPilot uses wrist motion to move the cursor and detect pinches.
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: $(BUNDLE_ID_PREFIX).wristpilot.watchapp
+        TARGETED_DEVICE_FAMILY: "4"
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+  WristPilotMac:
+    type: application
+    platform: macOS
+    sources: [Mac, Shared]
+    info:
+      path: Mac/Info.plist
+      properties:
+        CFBundleDisplayName: WristPilot
+        LSUIElement: true
+        LSApplicationCategoryType: public.app-category.utilities
+        NSBluetoothAlwaysUsageDescription: WristPilot receives cursor movement from your Apple Watch over Bluetooth.
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: $(BUNDLE_ID_PREFIX).wristpilot.mac
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ENABLE_HARDENED_RUNTIME: NO
+        ENABLE_APP_SANDBOX: NO

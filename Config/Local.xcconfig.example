@@ -1,0 +1,5 @@
+// Copy this file to Config/Local.xcconfig and fill in your own values.
+// Team ID: Xcode > Settings > Accounts, or developer.apple.com > Membership.
+DEVELOPMENT_TEAM = ABCDE12345
+// Any reverse-DNS prefix you own, e.g. com.yourname
+BUNDLE_ID_PREFIX = com.yourname
